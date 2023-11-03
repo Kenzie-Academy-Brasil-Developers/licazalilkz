@@ -1,7 +1,6 @@
 import "dotenv/config";
 import express from "express";
 import { connectDataBase, createDataBaseTable } from "./database";
-import { createTable } from "./logics";
 import { moviesRouter } from "./routes/routes";
 
 const app = express();
