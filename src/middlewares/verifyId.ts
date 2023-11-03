@@ -13,7 +13,7 @@ export const verifyId = async (
   const queryResult: QueryResult = await client.query(query, [idMovie]);
 
   if (queryResult.rowCount === 0) {
-    return res.status(404).json({ message: "Movie id doesnt exists!" });
+    return res.status(404).json({ message: "Movie not found!" });
   }
 
   return next();

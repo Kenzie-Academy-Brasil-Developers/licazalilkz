@@ -34,9 +34,7 @@ export const createTable = async (req: Request, res: Response) => {
   const data = await client.query(queryConfig);
   console.log(data);
 
-  return res
-    .status(201)
-    .json({ message: "Movie created sucessfuly", movies: data.rows[0] });
+  return res.status(201).json(data.rows[0]);
 };
 
 export const deleteMovies = async (req: Request, res: Response) => {
@@ -47,9 +45,9 @@ export const deleteMovies = async (req: Request, res: Response) => {
     values: [id],
   };
 
-  await client.query(queryConfig);
+  const data = await client.query(queryConfig);
 
-  return res.status(200).json({ message: "Movie deleted with sucessfuly !" });
+  return res.status(204).json(data.rows[0]);
 };
 
 export const editMovie = async (req: Request, res: Response) => {
@@ -63,5 +61,5 @@ export const editMovie = async (req: Request, res: Response) => {
   const data = await client.query(query);
 
   console.log(data);
-  return res.status(200).json({message:"sucessfuly edited !", movies: data.rows[0]});
+  return res.status(200).json(data.rows[0]);
 };
